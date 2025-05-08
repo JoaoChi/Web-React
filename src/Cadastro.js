@@ -1,55 +1,74 @@
 import React, { useState } from 'react';
+import './App.css'; // usa o mesmo estilo do login
+import logo from './loog.webp';
 import { Link } from 'react-router-dom';
-import './Cadastro.css';
+import { FaGoogle, FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { AiFillExperiment } from "react-icons/ai";
 
 function Cadastro() {
-    const [nome, setNome] = useState('');
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Cadastro:', { nome, email, senha });
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Cadastro:', { nome, email, senha });
+  };
 
-    return (
-        <div className="cadastro-container">
-                <h1 className="text-cadastro">Cadastro de Usuário</h1>
-                <div className="cadastro-column">
-                <form onSubmit={handleSubmit} className="cadastro-form">
-                    <label>Nome</label>
-                    <input
-                        type="text"
-                        value={nome}
-                        onChange={(e) => setNome(e.target.value)}
-                        required
-                    />
+  return (
+    <div className="container">
+      <div className="form-box">
+        <form onSubmit={handleSubmit}>
+        <AiFillExperiment size={40} color='#7494ec'/>
+          <h1>Cadastro</h1>
 
-                    <label>Email</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
+          <div className="input-box">
+            <input
+              type="text"
+              placeholder="Nome"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              required
+            />
+          </div>
 
-                    <label>Senha</label>
-                    <input
-                        type="password"
-                        value={senha}
-                        onChange={(e) => setSenha(e.target.value)}
-                        required
-                    />
+          <div className="input-box">
+            <input
+              type="email"
+              placeholder="E-mail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-                    <button type="submit">Cadastrar</button>
+          <div className="input-box">
+            <input
+              type="password"
+              placeholder="Senha"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              required
+            />
+          </div>
 
-                    <p>
-                        Já tem uma conta? <Link to="/">Voltar para login</Link>
-                    </p>
-                </form>
-            </div>
-        </div>
-    );
+          <button type="submit" className="btn">Cadastrar</button>
+
+          <p className="social-text">Ou cadastre-se com plataformas digitais</p>
+          <div className="social-icons">
+            <a href="#"><FaGoogle /></a>
+            <a href="#"><FaFacebook /></a>
+            <a href="#"><FaGithub /></a>
+            <a href="#"><FaLinkedin /></a>
+          </div>
+
+          <p className="footer-register">
+            Já tem uma conta? <Link to="/">Voltar para login</Link>
+          </p>
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default Cadastro;
